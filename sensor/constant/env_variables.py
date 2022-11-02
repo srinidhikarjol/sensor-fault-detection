@@ -1,0 +1,9 @@
+'''
+setting the below env variables temporarily
+1) export MONGO_DB_URL=
+2) echo $MONGO_DB_URL
+'''
+MONGODB_URL_KEY = "MONGO_DB_URL"
+REGION_NAME = "us-east-1"
+AWS_ACCESS_KEY_ID_ENV_KEY = "AWS_ACCESS_KEY_ID"
+AWS_SECRET_ACCESS_KEY_ENV_KEY = "AWS_SECRET_ACCESS_KEY"
