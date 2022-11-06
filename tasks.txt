@@ -1,2 +1,0 @@
-check object storage vs file storage
-check amazon s3
