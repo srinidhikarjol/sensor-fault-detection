@@ -34,6 +34,7 @@ class SensorData:
 
             # convert collection to dataframe
             df = pd.DataFrame(list(collection.find()))
+            df = pd.read_csv("C:\\Users\\Srinidhi.Karjol\\industry-ready-project\\1-Fault Detection\\sensor-fault-detection\\sensor-fault-detection\\sensor\\data_access\\sample_data\\aps_failure_training_set1.csv")
 
             if "_id" in df.columns.to_list():
                 df = df.drop(columns=["_id"], axis=1)

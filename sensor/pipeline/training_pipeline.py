@@ -18,6 +18,7 @@ class TrainPipeline:
 
     def start_data_ingestion(self) -> DataIngestionArtifact :
         try:
+        
             self.data_ingestion_config = DataIngestionConfig(training_pipeline_config=
             self.training_pipeline_config)
             logging.info("Starting data ingestion")
@@ -76,4 +77,4 @@ class TrainPipeline:
             data_transformation_artifact: DataTransformationArtifact = self.start_data_transformation(data_validation_artifact=data_validation_artifact)
 
         except Exception as e:
-            raise SensorException(e,sys)           
+            raise SensorException(e,sys)       
