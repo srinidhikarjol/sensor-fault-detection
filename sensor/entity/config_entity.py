@@ -78,3 +78,13 @@ class ModelTrainerConfig:
         )
     
         self.expected_model_accuracy = training_pipeline.MODEL_TRAINER_EXPECTED_SCORE
+
+
+class ModelEvaluationConfig:
+    def __init__(self,training_pipeline_config:TrainingPipelineConfig) -> None:
+        self.model_evaluation_dir = os.path.join(
+            training_pipeline_config.artifact_dir_name,training_pipeline.MODEL_TRAINER_DIR_NAME
+        )
+
+        self.report_file_path = os.path.join(self.model_evaluation_dir,training_pipeline.MODEL_EVALUATION_REPORT_FILE_NAME)
+        self.change_threshold = training_pipeline.MODEL_EVALUATION_CHANGED_THRESHOLD_SCORE
