@@ -43,7 +43,7 @@ class ModelResolver:
         except Exception as e:
             raise SensorException(e,sys)
 
-    def is_model_exists(self) -> str:
+    def is_model_exists(self) -> bool:
         try:
             #check if "saved_models" directory exisits
             if os.path.exists(self.model_dir):
@@ -54,7 +54,7 @@ class ModelResolver:
             if len(timestamps) == 0:
                 return False
 
-            latest_model_path = self.get_best_model()
+            latest_model_path = self.get_best_model_path()
             #check if there exists a latest model
             if not os.path.exists(latest_model_path):
                 return False 
