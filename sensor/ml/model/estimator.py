@@ -21,7 +21,7 @@ class SensorModel:
         self.model = model
 
     def predict(self,x):
-        preproces_x = self.preprocessor(x)
+        preproces_x = self.preprocessor.transform(x)
         y_val = self.model.predict(preproces_x)
         return y_val            
 
@@ -46,7 +46,7 @@ class ModelResolver:
     def is_model_exists(self) -> bool:
         try:
             #check if "saved_models" directory exisits
-            if os.path.exists(self.model_dir):
+            if not os.path.exists(self.model_dir):
                 return False
 
             #check if the "saved_models" directory is empty    

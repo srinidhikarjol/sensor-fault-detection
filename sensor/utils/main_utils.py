@@ -59,7 +59,7 @@ def save_object(file_path: str, obj: object) -> None:
     except Exception as e:
         raise SensorException(e, sys) from e
 
-def load_object(file_path: str, ) -> object:
+def load_object(file_path: str) -> object:
     try:
         if not os.path.exists(file_path):
             raise Exception(f"The file: {file_path} is not exists")
