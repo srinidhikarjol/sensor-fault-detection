@@ -20,6 +20,7 @@ class TrainPipeline:
     def __init__(self) :
         self.training_pipeline_config = TrainingPipelineConfig()
         self.is_pipeline_running = False
+        self.s3_sync = S3Sync()
 
     def start_data_ingestion(self) -> DataIngestionArtifact :
         try:
@@ -95,7 +96,7 @@ class TrainPipeline:
             #everytime we run the pipeline, the pipeline will run,
             #gothrough the process and the artifact directory and model are uploaded onto S3
             aws_buket_url = f"s3://{TRAINING_BUCKET_NAME}/artifact/{self.training_pipeline_config.timestamp}"
-            self.s3_sync.sync_folder_to_s3(folder = self.training_pipeline_config.artifact_dir,aws_buket_url=aws_buket_url)
+            self.s3_sync.sync_folder_to_s3(folder=self.training_pipeline_config.artifact_dir_name,aws_bucket_url=aws_buket_url)
         except Exception as e:
             raise SensorException(e,sys)
             
@@ -103,7 +104,7 @@ class TrainPipeline:
         try:
             #we are syncing the trained model
             aws_buket_url = f"s3://{TRAINING_BUCKET_NAME}/{SAVED_MODEL_DIR}"
-            self.s3_sync.sync_folder_to_s3(folder = SAVED_MODEL_DIR,aws_buket_url=aws_buket_url)
+            self.s3_sync.sync_folder_to_s3(folder = SAVED_MODEL_DIR,aws_bucket_url=aws_buket_url)
         except Exception as e:
             raise SensorException(e,sys)                 
 
